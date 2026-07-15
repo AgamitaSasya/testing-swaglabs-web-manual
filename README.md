@@ -1,4 +1,4 @@
-# Portfolio: QA Manual Testing Baseline — Sauce Demo (Swag Labs)
+# QA Manual Testing Baseline — Sauce Demo (Swag Labs)
 
 ## 📌 Project Overview
 This repository documents the manual functional testing for the **Sauce Demo** (Swag Labs) e-commerce production website. Since the application lacked pre-existing documentation, I reverse-engineered its business rules to establish a clean QA testing baseline, map out user personas, and capture critical flow blockers before they impact the live user experience.
