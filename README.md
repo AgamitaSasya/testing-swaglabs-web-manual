@@ -1,38 +1,48 @@
-# Manual Testing Portfolio: Sauce Demo (Swag Labs)
+# Portfolio: QA Manual Testing Baseline — Sauce Demo (Swag Labs)
 
-## Project Overview
-This project documents the manual functional testing of the **Sauce Demo** (Swag Labs) e-commerce website https://www.saucedemo.com/ . The primary objective was to validate the end-to-end user from secure authentication to product management and final checkout ensuring a bug free experience for users.
+## 📌 Project Overview
+This repository documents the manual functional testing for the **Sauce Demo** (Swag Labs) e-commerce production website. Since the application lacked pre-existing documentation, I reverse-engineered its business rules to establish a clean QA testing baseline, map out user personas, and capture critical flow blockers before they impact the live user experience.
 
-I have structured the documentation into two main workbooks for better traceability:
-* **[Test Plan & Test Cases](./Test_Cases.xlsx)**: Includes the Requirement Traceability Matrix (RTM), Test Scenarios, and 25 detailed Test Cases.
-* **[Test Execution & Bug Report](./Test_Execution_and_Bug_Report.xlsx)**: Documents the actual results of the execution, pass/fail status, and technical details of discovered defects.
-
-## Test Execution Summary
-A total of **25 test cases** were executed across the following modules:
-| Module ID | Module Name | Total Cases | Passed | Failed |
-| :--- | :--- | :---: | :---: | :---: |
-| 1.1 | User Login | 5 | 5 | 0 |
-| 1.2 | Catalog Product | 7 | 7 | 0 |
-| 1.3 | Cart Functionality | 5 | 4 | 1 |
-| 1.4 | Checkout Process | 6 | 5 | 1 |
-| 1.5 | Navbar & Navigation | 2 | 2 | 0 |
-| **Total** | | **25** | **23** | **2** |
-
-## Defect Reports (Highlights)
-During the test execution, **2 functional bugs** were identified and documented:
-
-1. **[SWG_01] Quantity Limitation in Cart**
-   - **Description:** Users are unable to add more than one unit of the same product to the shopping cart.
-   - **Impact:** Prevents bulk purchases, potentially leading to lower sales conversion.
-2. **[SWG_02] Empty Cart Checkout Bypass**
-   - **Description:** The system allows users to proceed to the 'Checkout: Your Information' page even when the cart contains zero items.
-   - **Impact:** Critical logical error that may cause system confusion during the payment phase.
-
-## 🛠 Tools & Methodology
-- **Testing Type:** Manual Testing (Black Box)
-- **Techniques:** Boundary Value Analysis, Equivalence Partitioning, Positive & Negative Testing.
-- **Tools:** Microsoft Excel (Test Management), Google Chrome (Test Environment).
-- **Environment:** Windows 10 / Web Browser.
+The core deliverables are structured into two main tracking workbooks:
+* 📁 **[Test Plan & Test Cases](./Test_Cases.xlsx)** — Full test coverage split by primary business modules.
+* 📁 **[Bug Report](./Bug_Report.xlsx)** — Lifecycle logging and technical details of functional edge-cases discovered during execution.
 
 ---
-*Created by [Agamita Sasya]*
+
+## 📊 Test Execution Summary
+I designed and executed **40 distinct test cases** covering positive paths, boundary conditions, and negative validations across 4 primary modules:
+
+| Module Name | Total Cases | Passed | Failed | Pass Rate |
+| :--- | :---: | :---: | :---: | :---: |
+| **User Login** | 13 | 13 | 0 | 100% |
+| **Product Catalog & Sorting** | 7 | 7 | 0 | 100% |
+| **Shopping Cart Mechanics** | 11 | 10 | 1 | 90.9% |
+| **Checkout Workflow** | 9 | 8 | 1 | 88.8% |
+| **Total** | **40** | **38** | **2** | **95%** |
+
+---
+
+## 🚨 Logged Defects (Highlights)
+During the execution cycle, **2 functional bugs** were isolated, prioritized, and tracked with detailed reproduction steps:
+
+### 🎯 [BUG-CH-001] Empty Cart Checkout Validation Bypass
+* **Module:** Checkout (`TC-CH-001`)
+* **Severity:** `Critical` | **Priority:** `P1`
+* **The Issue:** The application lacks a zero-state validator on the cart page, allowing users to bypass standard flow logic and proceed directly to the `/checkout-step-one.html` screen even with 0 items in their cart.
+* **Business Risk:** High logical conflict that could disrupt downstream payment processing and inventory validation.
+
+### 🎯 [BUG-C-001] Quantity Modification Lock in Cart
+* **Module:** Cart Functionality (`TC-C-002`)
+* **Severity:** `High` | **Priority:** `P2`
+* **The Issue:** The cart UI does not support duplicate line item increments or multi-quantity selection for the same product ID.
+* **Business Risk:** Restricts bulk orders, directly impacting user conversion and reducing potential average order value (AOV).
+
+---
+
+## 🛠️ Approach & Core Capabilities
+* **Testing Types:** Black Box Testing, Exploratory Testing, Negative & Boundary Value Testing.
+* **User Persona Validation:** Validated application stability across distinct simulated behaviors (Standard User, Locked Out User, Performance Glitched, and Visual Anomalies).
+* **Environment:** Google Chrome | Windows 10.
+
+---
+*Maintained by Agamita Sasya*
