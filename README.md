@@ -4,7 +4,7 @@
 This repository documents the manual functional testing for the **Sauce Demo** (Swag Labs) e-commerce production website. Since the application lacked pre-existing documentation, I reverse-engineered its business rules to establish a clean QA testing baseline, map out user personas, and capture critical flow blockers before they impact the live user experience.
 
 The core deliverables are structured into two main tracking workbooks:
-* 📁 **[Test Plan & Test Cases](./Test_Cases.xlsx)** — Full test coverage split by primary business modules.
+* 📁 **[Test Plan & Test Cases](./Test_Cases_and_Test_Execution.xlsx)** — Full test coverage split by primary business modules.
 * 📁 **[Bug Report](./Bug_Report.xlsx)** — Lifecycle logging and technical details of functional edge-cases discovered during execution.
 
 ---
